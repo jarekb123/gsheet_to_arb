@@ -1,3 +1,6 @@
+## 0.0.7
+- Update `intl` package version
+
 ## 0.0.6
 
 - Category prefix configuration
