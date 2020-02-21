@@ -1,3 +1,6 @@
+## 0.0.13
+
+- Thanks to jarekb123 - FIX arb_to_class generator for multiline texts
 ## 0.0.12
 
 - Thanks to jarekb123 - FIX new-line characters (you can use \n in values now)

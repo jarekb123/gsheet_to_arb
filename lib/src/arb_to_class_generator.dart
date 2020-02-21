@@ -49,7 +49,6 @@ class TranslationsGenerator {
 
         var key = resource.id.text;
         var value = resource.value.text;
-        value = fixSpecialChars(value);
 
         builder.name = _getMethodName(key);
 
@@ -84,7 +83,6 @@ class TranslationsGenerator {
 
       var key = resource.id.text;
       var value = resource.value.text;
-      value = fixSpecialChars(value);
 
       builder.name = _getMethodName(key);
       builder.type = MethodType.getter;
