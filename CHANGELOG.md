@@ -1,4 +1,9 @@
+## 0.0.10
+
+- Thanks to jarekb123 - FIX new-line characters (you can use \n in values now)
+
 ## 0.0.7
+
 - Update `intl` package version
 
 ## 0.0.6

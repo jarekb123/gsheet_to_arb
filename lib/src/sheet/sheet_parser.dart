@@ -51,11 +51,11 @@ class SheetParser {
     Log.i("");
   }
 
-  Future<ArbBundle> _handleSheetsAuth(AuthClient client,
-      String documentId) async {
+  Future<ArbBundle> _handleSheetsAuth(
+      AuthClient client, String documentId) async {
     var sheetsApi = SheetsApi(client);
     var spreadsheet =
-    await sheetsApi.spreadsheets.get(documentId, includeGridData: true);
+        await sheetsApi.spreadsheets.get(documentId, includeGridData: true);
 
     var bundle = _handleSpreadsheet(spreadsheet);
 
@@ -105,9 +105,11 @@ class SheetParser {
       }
 
       for (var langValue = firstLanguageColumn;
-      langValue < values.length;
-      langValue++) {
+          langValue < values.length;
+          langValue++) {
         var value = values[langValue].formattedValue;
+        value = fixSpecialChars(value);
+
         var builder = _languages[langValue - firstLanguageColumn];
 
         var entry = ArbResource(key, value);
@@ -125,4 +127,9 @@ class SheetParser {
 
     return ArbBundle(documents);
   }
+}
+
+String fixSpecialChars(String value) {
+  // fix breaking line chars
+  return value.replaceAll('\\n', '\n');
 }
