@@ -1,5 +1,5 @@
 name: gsheet_to_arb
-version: 0.0.11
+version: 0.0.12
 author: Marcin Marek Gocał <marcin.gocal@gmail.com>, Jarosław Butajło <jaroslaw.butajlo@gmail.com>
 description: Imports Application Resource Bundle (ARB) from Google Sheets documents
 

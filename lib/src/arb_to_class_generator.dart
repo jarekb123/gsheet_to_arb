@@ -9,6 +9,7 @@ import 'dart:io';
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_style/dart_style.dart';
 import 'package:gsheet_to_arb/src/arb/arb.dart';
+import 'package:gsheet_to_arb/src/utils/string_utils.dart';
 import 'package:recase/recase.dart';
 
 class TranslationsGenerator {
@@ -65,8 +66,7 @@ class TranslationsGenerator {
         builder.returns = const Reference('String');
         builder.lambda = true;
         builder.body = Code(
-            """Intl.message("${value}", name: "${key}", args: [${args.join(
-                ", ")}], desc: "${description}")""");
+            """Intl.message("${value}", name: "${key}", args: [${args.join(", ")}], desc: "${description}")""");
         builder.docs.add("\t/// ${description}");
       });
       return method;
@@ -84,6 +84,7 @@ class TranslationsGenerator {
 
       var key = resource.id.text;
       var value = resource.value.text;
+      value = fixSpecialChars(value);
 
       builder.name = _getMethodName(key);
       builder.type = MethodType.getter;
@@ -99,9 +100,4 @@ class TranslationsGenerator {
   String _getMethodName(String key) {
     return ReCase(key).camelCase;
   }
-}
-
-String fixSpecialChars(String value) {
-  // fix breaking line chars
-  return value.replaceAll('\\n', '\n');
 }

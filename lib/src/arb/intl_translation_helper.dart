@@ -8,6 +8,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:gsheet_to_arb/src/utils/log.dart';
+import 'package:gsheet_to_arb/src/utils/string_utils.dart';
 import 'package:intl_translation/extract_messages.dart';
 import 'package:intl_translation/generate_localized.dart';
 import 'package:intl_translation/src/icu_parser.dart';
@@ -102,6 +103,10 @@ class IntlTranslationHelper {
     if (data == null) return null;
     var parsed = pluralAndGenderParser.parse(data).value;
     if (parsed is LiteralString && parsed.string.isEmpty) {
+      if (data is String) {
+        data = fixSpecialChars(data);
+      }
+
       parsed = plainParser.parse(data).value;
     }
     return new BasicTranslatedMessage(id, parsed, messages);
