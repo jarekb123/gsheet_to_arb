@@ -48,6 +48,7 @@ class TranslationsGenerator {
 
         var key = resource.id.text;
         var value = resource.value.text;
+        value = fixSpecialChars(value);
 
         builder.name = _getMethodName(key);
 
@@ -98,4 +99,9 @@ class TranslationsGenerator {
   String _getMethodName(String key) {
     return ReCase(key).camelCase;
   }
+}
+
+String fixSpecialChars(String value) {
+  // fix breaking line chars
+  return value.replaceAll('\\n', '\n');
 }

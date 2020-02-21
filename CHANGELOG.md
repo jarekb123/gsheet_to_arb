@@ -1,4 +1,4 @@
-## 0.0.10
+## 0.0.11
 
 - Thanks to jarekb123 - FIX new-line characters (you can use \n in values now)
 

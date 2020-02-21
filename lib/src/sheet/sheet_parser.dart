@@ -108,7 +108,6 @@ class SheetParser {
           langValue < values.length;
           langValue++) {
         var value = values[langValue].formattedValue;
-        value = fixSpecialChars(value);
 
         var builder = _languages[langValue - firstLanguageColumn];
 
@@ -127,9 +126,4 @@ class SheetParser {
 
     return ArbBundle(documents);
   }
-}
-
-String fixSpecialChars(String value) {
-  // fix breaking line chars
-  return value.replaceAll('\\n', '\n');
 }
